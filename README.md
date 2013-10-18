@@ -118,11 +118,12 @@ __Headers__
 
 
 __Body__
+```js
 [
 {"type" : "email", "id" : "email@domain.com"}, 
 {"type" : "network", "id" : "fb/profileID"}
 ]
-
+```
 __Example__
 
 ```js
