@@ -97,6 +97,7 @@ __Networks that can be searched__
 
 Receive an object on a callback URL with the results.
 This is a backend to backend request.
+There is a limit of 100 profiles per batch.
 
 * Method: POST
 * Auth: YES
