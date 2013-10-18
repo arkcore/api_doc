@@ -92,6 +92,64 @@ __Networks that can be searched__
 * Facebook, fb
 * Twitter, tw
 
+<a name="batch" />
+## Get a batch response
+
+Receive an object on a callback URL with the results.
+This is a backend to backend request.
+
+* Method: POST
+* Auth: YES
+* Url: https://testapi.ark.com/batchprofile
+
+__Response codes__
+
+* 200, profile is retrieved in JSON format.
+* 302, Profile is being retrieved perform another request after a few seconds.
+* 404, There is no info available about this profile.
+* 401, Unauthorized, token missing or incorrect.
+* 429, Out of requests, current token has no more request left.
+* 503, Internal server error. Retry after a few minutes.
+
+__Headers__
+
+* apit_token - Your API token.
+* callback_url: [the URL you want to be called when processed]
+
+
+__Body__
+[
+{"type" : "email", "id" : "email@domain.com"}, 
+{"type" : "network", "id" : "fb/profileID"}
+]
+
+__Example__
+
+```js
+var request = require('request');
+
+request(
+{
+	url : config.testUrl + '/batchprofile',
+	strictSSL : false,
+	method: 'POST',
+	headers: {
+		api_token : testToken,
+		callback : 'http://myserver.com/arkcallback'
+		},
+	json : {
+		type : 'email', id: 'goofyahead@gmail.com',
+		type : 'email', id: 'patrick@ark.com',
+		type : 'email', id: 'inventionasdf@inventedasdfasdf.com'
+		}
+},
+	function (err, response, body) {
+		if (err) throw err;
+		console.log(body);// this will show the callback url where the results will be sent
+	});
+```
+
+
 <a name="example" />
 ## Response example and format
 
