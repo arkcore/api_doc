@@ -27,7 +27,7 @@ __Response codes__
 
 __Headers__
 
-* apit_token - Your API token.
+* api_token - Your API token.
 
 __Example__
 
